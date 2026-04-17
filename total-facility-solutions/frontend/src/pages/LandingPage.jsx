@@ -281,9 +281,11 @@ export default function LandingPage() {
           </div>
           <div className="border-t border-white/8 pt-6 text-center">
             <p className="text-white/20 text-xs">{`© ${new Date().getFullYear()} ${t('common.totalFacility')} ${t('common.solutions')}. ${t('landing.rights')}`}</p>
+            <p className="text-white/30 text-xs mt-2">Developed By -- Md Farhan Kalim</p>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+
