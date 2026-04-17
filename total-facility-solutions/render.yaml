@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: tfs-backend
+    env: node
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      # Add these in Render dashboard (sensitive values):
+      # MONGODB_URI
+      # JWT_SECRET
+      # JWT_REFRESH_SECRET
+      # EMAIL_HOST
+      # EMAIL_PORT
+      # EMAIL_USER
+      # EMAIL_PASS
+      # CLOUDINARY_CLOUD_NAME
+      # CLOUDINARY_API_KEY
+      # CLOUDINARY_API_SECRET
+      # CLIENT_URL (your Vercel URL)
+      # ADMIN_EMAIL
+      # ADMIN_PASSWORD
