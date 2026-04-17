@@ -26,7 +26,7 @@ router.put('/profile', seekerOnly, [
     }
 
     const allowedFields = [
-      'fatherName', 'address', 'city', 'state', 'pincode',
+      'fatherName', 'aadhaar', 'address', 'city', 'state', 'pincode',
       'qualification', 'school', 'skills', 'primarySkill', 'experience',
       'previousWork', 'lastCompany', 'preferredShift', 'workTiming',
       'willingToRelocate', 'expectedSalary', 'documentsSubmitted',
@@ -112,3 +112,4 @@ router.patch('/mark-notifications-read', async (req, res, next) => {
 });
 
 module.exports = router;
+

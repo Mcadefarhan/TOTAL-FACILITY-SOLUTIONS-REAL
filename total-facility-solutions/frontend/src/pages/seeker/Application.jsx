@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -82,17 +82,17 @@ export default function SeekerApplication() {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-  const skillOptions = buildOptions(englishSkills, translatedSkills);
-  const docOptions = buildOptions(englishDocs, translatedDocs);
-  const shiftOptions = buildOptions(englishShifts, translatedShifts);
-  const experienceOptions = buildOptions(englishExperiences, translatedExperiences);
-  const qualificationOptions = buildOptions(englishQualifications, translatedQualifications);
+  const skillOptions = useMemo(() => buildOptions(englishSkills, translatedSkills), [englishSkills, translatedSkills]);
+  const docOptions = useMemo(() => buildOptions(englishDocs, translatedDocs), [englishDocs, translatedDocs]);
+  const shiftOptions = useMemo(() => buildOptions(englishShifts, translatedShifts), [englishShifts, translatedShifts]);
+  const experienceOptions = useMemo(() => buildOptions(englishExperiences, translatedExperiences), [englishExperiences, translatedExperiences]);
+  const qualificationOptions = useMemo(() => buildOptions(englishQualifications, translatedQualifications), [englishQualifications, translatedQualifications]);
 
-  const skillLookup = buildLookup(englishSkills, translatedSkills);
-  const docLookup = buildLookup(englishDocs, translatedDocs);
-  const shiftLookup = buildLookup(englishShifts, translatedShifts);
-  const experienceLookup = buildLookup(englishExperiences, translatedExperiences);
-  const qualificationLookup = buildLookup(englishQualifications, translatedQualifications);
+  const skillLookup = useMemo(() => buildLookup(englishSkills, translatedSkills), [englishSkills, translatedSkills]);
+  const docLookup = useMemo(() => buildLookup(englishDocs, translatedDocs), [englishDocs, translatedDocs]);
+  const shiftLookup = useMemo(() => buildLookup(englishShifts, translatedShifts), [englishShifts, translatedShifts]);
+  const experienceLookup = useMemo(() => buildLookup(englishExperiences, translatedExperiences), [englishExperiences, translatedExperiences]);
+  const qualificationLookup = useMemo(() => buildLookup(englishQualifications, translatedQualifications), [englishQualifications, translatedQualifications]);
 
   useEffect(() => {
     const p = user?.seekerProfile || {};
@@ -330,3 +330,5 @@ export default function SeekerApplication() {
     </div>
   );
 }
+
+
